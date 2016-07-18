@@ -1,9 +1,15 @@
 #include "User.h"
 
+#include <iostream>
+
+using namespace std;
+
 int main() {
 
-	// see if the user exists
+	// login the user
 	User user = User();
+	user.login();
+
 
 
 

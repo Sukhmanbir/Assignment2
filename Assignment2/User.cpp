@@ -12,7 +12,6 @@ User::User() {
 	// load the user file
 	FileUtility fu = FileUtility();
 	string userFile = fu.file_load("users.txt");
-	cout << userFile << endl;
 	Util u = Util();
 	
 	// parse the file into users
@@ -32,7 +31,6 @@ User::User() {
 
 		// skip user if ill-formatted
 		if (userInfoString.size() != 5) {
-			cout << "here";
 			continue;
 		}
 
@@ -50,24 +48,29 @@ User::User() {
 		counter++;
 	}
 
-	
-	int counter2 = 0;
-	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
-
-		cout << "username: " << userCollection[counter2].username << endl;
-		cout << "fname: " << userCollection[counter2].userInfo.firstName << endl;
-		cout << "lname: " << userCollection[counter2].userInfo.lastName << endl;
-		cout << "email: " << userCollection[counter2].userInfo.city << endl;
-		cout << "phone: " << userCollection[counter2].userInfo.phone << endl;
-
-
-
-		counter2++;
-	}
 }
 
 void User::login() {
 
+	cout << "Please enter your username: ";
+	string usernamePrompt;
+	getline(cin, usernamePrompt);
+	
+	Util u = Util();
+	u.lowercase(usernamePrompt);
+
+	// see if the user already exists
+	int counter = 0;
+	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
+
+		// set the active user
+		if (userCollection[counter].username == usernamePrompt) {
+			activeUser = userCollection[counter];
+		}
+
+		counter++;
+	}
+	
 }
 
 void User::checkIfUserExists() {

@@ -11,3 +11,7 @@ vector<string> Util::splitString(string s, char del) {
 
 	return newString;
 }
+
+void Util::lowercase(string &str) {
+	transform(str.begin(), str.end(), str.begin(), ::tolower);
+}

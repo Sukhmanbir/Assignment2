@@ -12,4 +12,5 @@ using namespace std;
 class Util {
 public:
 	vector<string> splitString(string s, char del);
+	void lowercase(string &str);
 };
