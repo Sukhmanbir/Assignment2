@@ -73,6 +73,10 @@ void User::login() {
 	
 }
 
+void User::registerUser() {
+
+}
+
 void User::checkIfUserExists() {
 
 }
