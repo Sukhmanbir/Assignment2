@@ -31,18 +31,18 @@ User::User() {
 		vector<string> userInfoString = u.splitString(users[counter], ',');
 
 		// skip user if ill-formatted
-		if (userInfoString.size() != 6) {
+		if (userInfoString.size() != 5) {
+			cout << "here";
 			continue;
 		}
 
 		// holds the user info
 		UserStruct us = UserStruct();
 		us.username = userInfoString[0];
-		us.password = userInfoString[1];
-		us.userInfo.city = userInfoString[2];
-		us.userInfo.phone = userInfoString[3];
-		us.userInfo.firstName = userInfoString[4];
-		us.userInfo.lastName = userInfoString[5];
+		us.userInfo.city = userInfoString[1];
+		us.userInfo.phone = userInfoString[2];
+		us.userInfo.firstName = userInfoString[3];
+		us.userInfo.lastName = userInfoString[4];
 
 		// add to the user collection
 		userCollection.push_back(us);
@@ -50,6 +50,20 @@ User::User() {
 		counter++;
 	}
 
+	
+	int counter2 = 0;
+	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
+
+		cout << "username: " << userCollection[counter2].username << endl;
+		cout << "fname: " << userCollection[counter2].userInfo.firstName << endl;
+		cout << "lname: " << userCollection[counter2].userInfo.lastName << endl;
+		cout << "email: " << userCollection[counter2].userInfo.city << endl;
+		cout << "phone: " << userCollection[counter2].userInfo.phone << endl;
+
+
+
+		counter2++;
+	}
 }
 
 void User::login() {

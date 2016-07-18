@@ -17,7 +17,6 @@ public:
 private:
 	struct UserStruct {
 		string username;
-		string password;
 		struct UserInfo {
 			string firstName;
 			string lastName;
