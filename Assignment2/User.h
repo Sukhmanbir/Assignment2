@@ -1,25 +1,30 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 using namespace std;
 
 
 class User {
 public:
+	User();
 	void login();
 	void checkIfUserExists();
 	void updateUserList();
 	void deleteUser();
 	void setHighScore();
 private:
-	struct user {
+	struct UserStruct {
 		string username;
-		struct userInfo {
+		string password;
+		struct UserInfo {
 			string firstName;
 			string lastName;
-			string email;
+			string city;
 			string phone;
 		};
+		UserInfo userInfo;
 	};
+	vector<UserStruct> userCollection;
 };
