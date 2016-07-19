@@ -14,7 +14,6 @@ public:
 	void updateUserList();
 	void deleteUser();
 	void setHighScore();
-private:
 	struct UserStruct {
 		string username;
 		struct UserInfo {
@@ -25,7 +24,9 @@ private:
 		};
 		UserInfo userInfo;
 	};
+	string getUsername();
+private:
 	vector<UserStruct> userCollection;
 	UserStruct activeUser;
-	void registerUser();
+	UserStruct getUserInfo();
 };

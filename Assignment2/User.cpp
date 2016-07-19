@@ -50,12 +50,15 @@ User::User() {
 
 }
 
+// login a new user or register an account and then log them in
 void User::login() {
 
+	// get the username
 	cout << "Please enter your username: ";
 	string usernamePrompt;
 	getline(cin, usernamePrompt);
 	
+	// normalize the input
 	Util u = Util();
 	u.lowercase(usernamePrompt);
 
@@ -66,15 +69,48 @@ void User::login() {
 		// set the active user
 		if (userCollection[counter].username == usernamePrompt) {
 			activeUser = userCollection[counter];
+			return;
 		}
 
 		counter++;
 	}
-	
+
+	// create a new user and add them to the vector
+	cout << endl << "No user with the name " << usernamePrompt << " found." << endl;
+	cout << "Please register as a new user in order to continue." << endl << endl;
+	UserStruct userStruct = getUserInfo();
+	userStruct.username = usernamePrompt;
+	userCollection.push_back(userStruct);
+	activeUser = userStruct;
+		
 }
 
-void User::registerUser() {
+// gets the users information
+User::UserStruct User::getUserInfo() {
 
+	UserStruct userStruct = UserStruct();
+
+	cout << "Please enter your first name: ";
+	string firstname;
+	getline(cin, userStruct.userInfo.firstName);
+
+	cout << "Please enter your last name: ";
+	string lastname;
+	getline(cin, userStruct.userInfo.lastName);
+
+	cout << "Please enter your city: ";
+	string city;
+	getline(cin, userStruct.userInfo.city);
+
+	cout << "Please enter your phone number: ";
+	string phone;
+	getline(cin, userStruct.userInfo.phone);
+
+	return userStruct;
+}
+
+string User::getUsername() {
+	return activeUser.username;
 }
 
 void User::checkIfUserExists() {

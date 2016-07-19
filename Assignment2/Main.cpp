@@ -9,8 +9,8 @@ int main() {
 	// login the user
 	User user = User();
 	user.login();
-
-
+	cout << "Logged in as " << user.getUsername() << endl;
+	
 
 
 	system("PAUSE");
