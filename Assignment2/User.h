@@ -25,6 +25,7 @@ public:
 		UserInfo userInfo;
 	};
 	string getUsername();
+	void saveUsers();
 private:
 	vector<UserStruct> userCollection;
 	UserStruct activeUser;

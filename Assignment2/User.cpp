@@ -82,7 +82,7 @@ void User::login() {
 	userStruct.username = usernamePrompt;
 	userCollection.push_back(userStruct);
 	activeUser = userStruct;
-		
+	saveUsers();
 }
 
 // gets the users information
@@ -111,6 +111,27 @@ User::UserStruct User::getUserInfo() {
 
 string User::getUsername() {
 	return activeUser.username;
+}
+
+void User::saveUsers() {
+
+	vector<string> userVector;
+	int counter = 0;
+	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
+		string contents;
+		contents += userCollection[counter].username;
+		contents += "," + userCollection[counter].userInfo.firstName;
+		contents += "," + userCollection[counter].userInfo.lastName;
+		contents += "," + userCollection[counter].userInfo.city;
+		contents += "," + userCollection[counter].userInfo.phone;
+		userVector.push_back(contents);
+
+		counter++;
+	}
+
+	FileUtility fu = FileUtility();
+	fu.file_write("users.txt", userVector);
+
 }
 
 void User::checkIfUserExists() {
