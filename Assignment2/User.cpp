@@ -138,11 +138,26 @@ void User::saveUsers() {
 
 }
 
-void User::checkIfUserExists() {
+// updates the users personal info
+void User::updateUser() {
 
-}
+	// get the users updated info
+	UserStruct userStruct = getUserInfo();
+	userStruct.username = activeUser.username;
 
-void User::updateUserList() {
+	// find the user
+	int counter = 0;
+	bool flag = false;
+	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
+		if (userCollection[counter].username == activeUser.username) {
+			flag = true;
+			break;
+		}
+	}
+
+	// overwrite the user in the vector
+	userCollection[counter] = userStruct;
+	saveUsers();
 
 }
 

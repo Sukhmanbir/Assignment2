@@ -10,8 +10,7 @@ class User {
 public:
 	User();
 	void login();
-	void checkIfUserExists();
-	void updateUserList();
+	void updateUser();
 	void deleteUser();
 	void setHighScore();
 	struct UserStruct {

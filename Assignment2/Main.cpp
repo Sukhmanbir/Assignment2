@@ -13,7 +13,6 @@ int main() {
 	cout << "Logged in as " << user.getUsername() << endl;
 	
 	vector<string> options = vector<string>();
-	options.push_back("Exit program");
 	options.push_back("Set score");
 	options.push_back("Show high score");
 	options.push_back("Update user");
@@ -24,26 +23,26 @@ int main() {
 
 		Menu m = Menu("Please select an option", options);
 		int response = m.getPromptResponse();
-
+		cout << response;
 		// exit the program if requested
-		if (response == 0) {
+		if (response == -1) {
 			exit(EXIT_SUCCESS);
 		}
 
 		// set a new high score
-		if (response == 1) {
+		if (response == 0) {
 			cout << "set a high score" << endl;
 
 			// show the current high score
-		} else if (response == 2) {
+		} else if (response == 1) {
 			cout << "show the high score" << endl;
 
 			// update the user
-		} else if (response == 3) {
-			cout << "updating the user" << endl;
+		} else if (response == 2) {
+			user.updateUser();
 
 			// delete the user
-		} else if (response == 4) {
+		} else if (response == 3) {
 			user.deleteUser();
 			cout << "You have been removed from the system" << endl;
 			system("PAUSE");
