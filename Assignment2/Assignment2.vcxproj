@@ -112,6 +112,7 @@
   <ItemGroup>
     <ClInclude Include="FileUtility.h" />
     <ClInclude Include="HighScoreManager.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="User.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
@@ -119,6 +120,7 @@
     <ClCompile Include="FileUtility.cpp" />
     <ClCompile Include="HighScoreManager.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="User.cpp" />
     <ClCompile Include="Util.cpp" />
   </ItemGroup>

@@ -75,14 +75,18 @@ void User::login() {
 		counter++;
 	}
 
-	// create a new user and add them to the vector
+	// notify user they need to register
 	cout << endl << "No user with the name " << usernamePrompt << " found." << endl;
 	cout << "Please register as a new user in order to continue." << endl << endl;
+
+	// create and store new user
 	UserStruct userStruct = getUserInfo();
 	userStruct.username = usernamePrompt;
 	userCollection.push_back(userStruct);
-	activeUser = userStruct;
 	saveUsers();
+
+	// set active user
+	activeUser = userStruct;
 }
 
 // gets the users information
@@ -142,7 +146,28 @@ void User::updateUserList() {
 
 }
 
+// deletes a user from the users file
 void User::deleteUser() {
+
+	// find the users position
+	int counter = 0;
+	bool found = false;
+	for (auto i = userCollection.begin(); i < userCollection.end(); i++) {
+		if (userCollection[counter].username == activeUser.username) {
+			found = true;
+			break;
+		}
+		counter++;
+	}
+
+	// delete the user from the collection if found
+	if (found) {
+		userCollection.erase(userCollection.begin() + counter);
+	}
+	
+	// rewrite the usre file
+	FileUtility fu = FileUtility();
+	saveUsers();
 
 }
 
